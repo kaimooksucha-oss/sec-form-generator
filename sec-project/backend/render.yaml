@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: sec-form-api
+    runtime: python
+    rootDir: backend
+    buildCommand: apt-get update -y && apt-get install -y libreoffice poppler-utils fonts-thai-tlwg && pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: FRONTEND_URL
+        value: https://YOUR-APP.vercel.app   # ← แก้เป็น URL จริงของคุณ
+    plan: free
